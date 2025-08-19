@@ -1,29 +1,24 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack } from "expo-router";
+import { StyleSheet } from "react-native";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+const styles = StyleSheet.create({
+  faixa: {
+    backgroundColor: "rgba(141, 242, 136, 1)",
+  },
+  texto: {
+    color: "#000000ff",
+  },
+});
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+export default function Layout() {
+  return <Stack
+    screenOptions={{
+      headerStyle: styles.faixa,
+      headerTitleStyle: styles.texto,
+    }}
+  >
+    <Stack.Screen name="index" options={{ title: "Principal inicio"  }} />
+    <Stack.Screen name="pergunta1" options={{ title: "Pergunta 1" }} />
 
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  </Stack>;
 }
