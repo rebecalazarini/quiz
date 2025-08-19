@@ -16,7 +16,7 @@
    ```bash
    npx expo start
    ```
-Screenshot
+# Screenshot
 ![Wireframe](./assets/images/Captura%20de%20tela%202025-08-19%20160337.png)
 
 ![screen](./assets/images/Captura%20de%20tela%202025-08-19%20160400.png)
